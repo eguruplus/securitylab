@@ -33,7 +33,7 @@ static String decrypt(String ct, int key)
             }
             pt+=letter;
         }
-        return(ct);
+        return(pt);
     }
     public static void main(String[] args) {
 
