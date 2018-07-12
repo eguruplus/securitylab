@@ -1,92 +1,48 @@
-import java.util.*;
-class RailFenceBasic{
- int depth;
- String Encryption(String plainText,int depth)throws Exception
- {
-  int r=depth,len=plainText.length();
-  int c=len/depth;
-  if(c%2!=0)
-	  c=c+1;
-  char mat[][]=new char[r][c];
-  int k=0;
-   
-  String cipherText="";
-   
-  for(int i=0;i< c;i++)
-  {
-   for(int j=0;j< r;j++)
-   {
-    if(k!=len)
-     mat[j][i]=plainText.charAt(k++);
-    else
-     mat[j][i]='$';
-   }
-  }
-  for(int i=0;i< r;i++)
-  {
-   for(int j=0;j< c;j++)
-   {
-    
-	cipherText+=mat[i][j];
-   }
-  }
-  return cipherText;
- }
-  
-  
- String Decryption(String cipherText,int depth)throws Exception
- {
-  int r=depth,len=cipherText.length();
-  int c=len/depth;
-   if(c%2!=0)
-	  c=c+1;
-  char mat[][]=new char[r][c];
-  int k=0;
-   
-  String plainText="";
-   
-   
-  for(int i=0;i< r;i++)
-  {
-   for(int j=0;j< c;j++)
-   {
-    mat[i][j]=cipherText.charAt(k++);
-   }
-  }
-  for(int i=0;i< c;i++)
-  {
-   for(int j=0;j< r;j++)
-   {
-    if(mat[j][i]!='$')
-	plainText+=mat[j][i];
-   }
-  }
-   
-  return plainText;
- }
-}
- 
-class RailFence{
- public static void main(String args[])throws Exception
- {
-  RailFenceBasic rf=new RailFenceBasic(); 
-                Scanner scn=new Scanner(System.in);
-                int depth;
-   
-                String plainText,cipherText,decryptedText;
-                 
-                System.out.println("Enter plain text:");
-                plainText=scn.nextLine();
-                 
-                System.out.println("Enter depth for Encryption:");
-                depth=scn.nextInt();
-                
-  cipherText=rf.Encryption(plainText,depth);
-  System.out.println("Encrypted text is:\n"+cipherText);
-                 
-                decryptedText=rf.Decryption(cipherText, depth);
-                 
-  System.out.println("Decrypted text is:\n"+decryptedText);
-   
- }
+import java.io.*;
+class ceaser
+{
+
+    static String encrypt(String pt, int key) 
+    {
+               String ct="";
+
+        for (int i = 0; i < pt.length(); i++)
+        {
+
+            char letter = pt.charAt(i);
+            letter = (char) (letter + key);
+            if (letter > 'z') 
+            {
+                letter = (char) (letter - 26);
+            } 
+            ct+= letter;
+        }
+       return(ct);
+    }
+
+
+static String decrypt(String ct, int key) 
+{
+       String pt="";
+        for (int i = 0; i < ct.length(); i++) 
+        {
+           char letter = ct.charAt(i);
+            letter = (char) (letter - key);
+            if (letter < 'a') 
+            {
+                letter = (char) (letter + 26);
+            }
+            pt+=letter;
+        }
+        return(pt);
+    }
+    public static void main(String[] args) {
+
+        String a = "guru";
+        System.out.println(a);
+        String ct = encrypt(a, 1);
+        String pt = decrypt(ct, 1);
+        System.out.println("cipher text="+ct);
+        System.out.println("plain text="+pt);
+    }
 }
