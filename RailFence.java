@@ -5,6 +5,8 @@ class RailFenceBasic{
  {
   int r=depth,len=plainText.length();
   int c=len/depth;
+ if((len%depth)!=0)
+	  c=c+1;
   char mat[][]=new char[r][c];
   int k=0;
    
@@ -17,14 +19,15 @@ class RailFenceBasic{
     if(k!=len)
      mat[j][i]=plainText.charAt(k++);
     else
-     mat[j][i]='X';
+     mat[j][i]='$';
    }
   }
   for(int i=0;i< r;i++)
   {
    for(int j=0;j< c;j++)
    {
-    cipherText+=mat[i][j];
+    
+	cipherText+=mat[i][j];
    }
   }
   return cipherText;
@@ -35,6 +38,8 @@ class RailFenceBasic{
  {
   int r=depth,len=cipherText.length();
   int c=len/depth;
+ if((len%depth)!=0)
+	  c=c+1;
   char mat[][]=new char[r][c];
   int k=0;
    
@@ -52,7 +57,8 @@ class RailFenceBasic{
   {
    for(int j=0;j< r;j++)
    {
-    plainText+=mat[j][i];
+    if(mat[j][i]!='$')
+	plainText+=mat[j][i];
    }
   }
    
