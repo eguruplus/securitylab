@@ -1,7 +1,7 @@
 public class VigenereCipher {
     public static void main(String[] args) {
-        String key = "VIGENERECIPHER";
-        String ori = "Beware the Jabberwock, my son! The jaws that bite, the claws that catch!";
+        String key = "security";
+        String ori = "Complete the vigenere cipher program today";
         String enc = encrypt(ori, key);
         System.out.println(enc);
         System.out.println(decrypt(enc, key));
