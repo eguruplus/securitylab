@@ -15,7 +15,6 @@ public class VigenereCipher {
             if (c < 'A' || c > 'Z') continue;
             System.out.println((int)c);
             res += (char)((c + key.charAt(j) - 2 * 'A') % 26 + 'A');
-            //res += (char)((c + key.charAt(j) - 2 * 'A') % 26 + 'A');
             j = ++j % key.length();
         }
         return res;
