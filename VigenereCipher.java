@@ -7,22 +7,24 @@ public class VigenereCipher {
         System.out.println(decrypt(enc, key));
     }
  
-    static String encrypt(String text, final String key) {
+    static String encrypt(String text, String key) {
         String res = "";
         text = text.toUpperCase();
+        key=key.toUpperCase();
         for (int i = 0, j = 0; i < text.length(); i++) {
             char c = text.charAt(i);
             if (c < 'A' || c > 'Z') continue;
-            System.out.println((int)c);
+           
             res += (char)((c + key.charAt(j) - 2 * 'A') % 26 + 'A');
             j = ++j % key.length();
         }
         return res;
     }
  
-    static String decrypt(String text, final String key) {
+    static String decrypt(String text, String key) {
         String res = "";
         text = text.toUpperCase();
+        key=key.toUpperCase()
         for (int i = 0, j = 0; i < text.length(); i++) {
             char c = text.charAt(i);
             if (c < 'A' || c > 'Z') continue;
