@@ -23,6 +23,6 @@ public class MD5 {
     }
  
     public static void main(String[] args) throws NoSuchAlgorithmException {
-        System.out.println(MD5("karthik"));
+        System.out.println(MD5("HelloWorld"));
     }
 }
